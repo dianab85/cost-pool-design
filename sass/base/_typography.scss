@@ -1,0 +1,110 @@
+h2 {
+    font-size: 1.5em;
+    color: #142f53;
+    background-color: white;
+    z-index: 2;
+    position: relative;
+    padding-right: 0.25em;
+    font-family: "Archer";
+    line-height: 1.2em;
+    font-weight: 400;
+    margin: 0 0 1.25em 0;
+
+    @media screen and (min-width:800px) {
+        font-size: 1.8em;
+    }
+
+    @media screen and (min-width:1025px) {
+        font-size: 1.5em;
+    }
+
+    
+    @media screen and (min-width:1200px) {
+        font-size: 1.75em;
+    }
+
+    @media screen and (min-width:1300px) {
+        font-size: 2em;
+    }
+}
+
+h1.step {
+    font-family: Lucida !important;
+    padding:0;
+    color:#996807;
+    font-size: 4em;
+    font-weight: 700;
+    margin: 0 0 0.25em 0;
+    display:block;
+    float:none;
+}
+
+h3 {
+    color: #142f53;
+    font-size: 1.2em;
+    display: inline-block;
+    margin: .75em 0;
+    position: relative;
+    font-family: "Archer";
+    margin: 0  0 0.75em;
+    padding-bottom: 0.25em;
+    @media screen and (min-width:800px) {
+        font-size: 1.75em;
+    }
+
+}
+
+h4 {
+    font-family: "Archer";
+    font-size: 1.4em;
+    padding-bottom: 0.35em;
+  
+    color: #142f53;
+}
+
+
+.underline {
+    text-decoration:underline;
+}
+
+input, select, p, ol {
+    font-size: 0.825em;
+    line-height: 1.6em;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: "Lucida";
+    margin-bottom: 1em;
+    color:#000;
+}
+
+.golden {
+    color: #996807;
+}
+// ol,ul,em, a
+
+p {
+    @media screen and (min-width:800px) {
+        margin-bottom: 2em;
+    }
+    @media screen and (min-width:800px) {
+        font-size: .925em;
+    }
+}
+
+.suffolkContentContainer ol {
+    color: #996807;
+    list-style-type: decimal-leading-zero;
+    font-size: 1em;
+    padding-left: 3.5em;
+    li p {
+        font-size: 1em;
+        margin-bottom:0;
+        color: #000;
+    }
+}
+
+li {
+    margin-bottom: .5em;
+    padding-left: .5em;
+    font-family: Lucida!important;
+}

@@ -1,0 +1,18 @@
+.alert {
+    cursor:pointer;
+    z-index: 2;
+    display: block;
+    opacity: 0;
+
+    p {
+        margin-bottom: 0;
+    }
+    
+    .close, >p {
+        display: inline-block;
+    }
+    .close {
+        padding: 0 20px 0 0;
+    }
+     
+}

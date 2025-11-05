@@ -14395,4 +14395,18 @@ div.pool__container__item-list__cost-driver p span {
   padding: 0 20px 0 0;
 }
 
+.credit-link {
+  font-size: 16px!important;
+  color: #333333;
+  text-decoration: underline;
+  text-decoration-color:#FF4766;
+}
+
+.credit-link:hover {
+  cursor:links;
+  color: #333333;
+  text-decoration: underline;
+  text-decoration-color:#FF4766;
+}
+
 /*# sourceMappingURL=maps/main.css.map */

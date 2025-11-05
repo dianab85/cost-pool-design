@@ -1,0 +1,41 @@
+on:
+  push:
+    branches:
+      - production   # deploy only from production branch
+jobs:
+  deploy:
+   runs-on: ubuntu-latest
+   
+   steps:
+      # 1️⃣ Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup SSH keys and known_hosts
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519          
+          chmod 600 ~/.ssh/id_ed25519
+          
+          # Add Hostinger server to known_hosts to avoid host verification issues
+          ssh-keyscan -p ${{ secrets.HOSTINGER_SSH_PORT }} ${{ secrets.HOSTINGER_SSH_HOST }} >> ~/.ssh/known_hosts          
+        shell: bash
+
+      # 3️⃣ Test SSH connection (optional but useful for debugging)
+      - name: Test SSH connection
+        run: |
+          ls -la ~/.ssh          
+          ssh -i ~/.ssh/id_ed25519 -p ${{ secrets.HOSTINGER_SSH_PORT }} \
+              -o StrictHostKeyChecking=no \
+              ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }} "echo SSH OK"
+        continue-on-error: false
+
+        # 3. Deploy files using rsync
+      - name: Deploy via rsync
+        run: |
+          echo "Starting file sync..."
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519 -p ${{ secrets.HOSTINGER_SSH_PORT }} -o StrictHostKeyChecking=no" \
+            ./ ${{ secrets.HOSTINGER_SSH_USER }}@${{ secrets.HOSTINGER_SSH_HOST }}:${{ secrets.HOSTINGER_PATH }}/
+          echo "Deployment complete!"
